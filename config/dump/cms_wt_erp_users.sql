@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.28, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
--- Host: localhost    Database: cms_wt_erp
+-- Host: 127.0.0.1    Database: cms_wt_erp
 -- ------------------------------------------------------
--- Server version	5.7.28-0ubuntu0.16.04.2
+-- Server version	5.7.27-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,27 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `product_color`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `product_color`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product_color` (
-  `id` int(11) DEFAULT NULL,
-  `name` text,
-  `shortcut` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `access` varchar(3) NOT NULL DEFAULT 's/a',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product_color`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `product_color` WRITE;
-/*!40000 ALTER TABLE `product_color` DISABLE KEYS */;
-INSERT INTO `product_color` VALUES (1,'Sem Cor','S/C'),(2,'Preto','pt'),(3,'Verde','vd'),(4,'Tan','tan'),(5,'Camoflado verde','cvd'),(6,'Multicam','Mtc');
-/*!40000 ALTER TABLE `product_color` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Henrique Lyra','hlyras1994@gmail.com','33999999961','$2a$10$CKmc/gWnJTmRGTOu/.dM9.Y4XDlh7AL3I8/F8wxnDd8xQ02iFnKmm','adm'),(2,'Luis Henrique','lh@gmail.com','21000000000','$2a$10$CKmc/gWnJTmRGTOu/.dM9.Y4XDlh7AL3I8/F8wxnDd8xQ02iFnKmm','s/a');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-05  8:02:45
+-- Dump completed on 2019-12-05 15:05:56

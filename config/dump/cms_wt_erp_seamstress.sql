@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.28, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
--- Host: localhost    Database: cms_wt_erp
+-- Host: 127.0.0.1    Database: cms_wt_erp
 -- ------------------------------------------------------
--- Server version	5.7.28-0ubuntu0.16.04.2
+-- Server version	5.7.27-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,32 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `customers`
+-- Table structure for table `seamstress`
 --
 
-DROP TABLE IF EXISTS `customers`;
+DROP TABLE IF EXISTS `seamstress`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `customers` (
+CREATE TABLE `seamstress` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `access` varchar(3) NOT NULL DEFAULT 'ctm',
+  `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `customers`
+-- Dumping data for table `seamstress`
 --
 
-LOCK TABLES `customers` WRITE;
-/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Emilson Junior','emilsonjr@gmail.com','$2a$10$CKmc/gWnJTmRGTOu/.dM9.Y4XDlh7AL3I8/F8wxnDd8xQ02iFnKmm','ctm');
-/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+LOCK TABLES `seamstress` WRITE;
+/*!40000 ALTER TABLE `seamstress` DISABLE KEYS */;
+/*!40000 ALTER TABLE `seamstress` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-05  8:02:45
+-- Dump completed on 2019-12-05 15:05:59
