@@ -1,6 +1,45 @@
 var product_array = [];
 
 $(function(){
+	$("#product-create-form").on('submit', (event) => {
+		event.preventDefault();
+		document.getElementById('product-create-submit').disabled = true;
+
+		$.ajax({
+			url: '/product/save',
+			method: 'post',
+			data: $("#product-create-form").serialize(),
+			success: (response) => {
+				if(response.unauthorized){
+					alert(response.unauthorized);
+					window.location.href = '/login';
+					return;
+				};
+				
+				if(response.msg){
+					alert(response.msg);
+					document.getElementById('product-create-submit').disabled = false;
+					return;
+				};
+
+				alert(response.done);
+				
+				document.getElementById('product-create-id').value = "";
+				document.getElementById('product-create-cod').value = "";
+				document.getElementById('product-create-category').value = "";
+				document.getElementById('product-create-color').value = "";
+				document.getElementById('product-create-name').value = "";
+				document.getElementById('product-create-name').value = "";
+				document.getElementById('product-create-size').value = "";
+				document.getElementById('product-create-value').value = "";
+
+				$("#product-filter-form").submit();
+
+				document.getElementById('product-create-submit').disabled = false;
+			}
+		});
+	});
+	
 	$("#product-filter-form").on('submit', (event) => {
 		event.preventDefault();
 		let btn = $(this);btn.attr('disabled', true);

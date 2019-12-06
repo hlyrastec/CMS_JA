@@ -27,6 +27,8 @@ CREATE TABLE `production` (
   `date` varchar(45) NOT NULL,
   `seamstress_id` int(11) NOT NULL,
   `seamstress_name` varchar(45) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_info` varchar(45) NOT NULL,
   `amount` int(11) NOT NULL,
   `received_amount` int(11) NOT NULL,
   `status` varchar(45) NOT NULL DEFAULT 'preparação',
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-05 15:05:57
+-- Dump completed on 2019-12-06 16:33:53

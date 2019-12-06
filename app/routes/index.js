@@ -22,6 +22,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 router.use("/admin", require("./admin"));
 router.use("/user", require("./user"));
 router.use("/product", require("./product"));
+router.use("/seamstress", require("./seamstress"));
 router.use("/customer", require("./customer"));
 router.use("/sale", require("./sale"));
 

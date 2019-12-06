@@ -16,27 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `seamstress`
+-- Table structure for table `product_value`
 --
 
-DROP TABLE IF EXISTS `seamstress`;
+DROP TABLE IF EXISTS `product_value`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `seamstress` (
+CREATE TABLE `product_value` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
+  `value` decimal(7,2) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `seamstress`
+-- Dumping data for table `product_value`
 --
 
-LOCK TABLES `seamstress` WRITE;
-/*!40000 ALTER TABLE `seamstress` DISABLE KEYS */;
-/*!40000 ALTER TABLE `seamstress` ENABLE KEYS */;
+LOCK TABLES `product_value` WRITE;
+/*!40000 ALTER TABLE `product_value` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_value` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-05 15:05:59
+-- Dump completed on 2019-12-06 16:33:54
