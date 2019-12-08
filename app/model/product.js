@@ -71,8 +71,8 @@ Product.remove = async (id) => {
 	return db(query);
 };
 
-Product.removeProductImages = async (product_id) => {
-	let query = "DELETE FROM cms_wt_erp.product_image WHERE product_id='"+product_id+"';";
+Product.removeProductImages = async (id) => {
+	let query = "DELETE FROM cms_wt_erp.product_image WHERE product_id='"+id+"';";
 	return db(query);
 };
 

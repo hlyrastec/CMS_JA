@@ -4,14 +4,15 @@
 	</head>
 	<body>
 		<header>
-			<a href="/"><img src="/images/favicon.png" class="favicon"></a>
-			<div>
-				<% if (user.access == 'adm') { %>
-                	<a onclick="window.location.href='/admin'">Admin</a>
-                <% } %>
-                | <a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Sair</a>
-			</div>
+		  <div onclick="window.location.href='/'" href="#default" class="favicon"><img class="image" src="/images/favicon.png"></div>
+		  <div class="right">
+		  	<% if (user.access == 'adm') { %>
+            	<a class="active" href="/admin">Admin</a>
+            <% } %>
+		    <a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Sair</a>
+		  </div>
 		</header>
+        <% include ./../partials/nav %>
 		<section>
 			<div class="container">
 				<div class="box-1">

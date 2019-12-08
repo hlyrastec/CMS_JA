@@ -5,13 +5,13 @@
 	<body>
 		<div class="main">
 			<header>
-				<a href="/"><img src="/images/favicon.png" class="favicon"></a>
-				<div>
-					<a href="/login">Login</a>
-				</div>
+			  <div onclick="window.location.href='/'" href="#default" class="favicon"><img class="image" src="/images/favicon.png"></div>
+			  <div class="right">
+	            <a class="active" href="/admin">Admin</a>
+			    <a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Sair</a>
+			  </div>
 			</header>
-			<nav>
-			</nav>
+        	<% include ./../partials/head %>
 			<section>
 				<div class="container">
 					<div class="box-1">
@@ -37,8 +37,8 @@
 								<input type="password" class="btn-generic-menu-big" name="password" maxlength="45" autocomplete="off">
 	                            <p>Confirmar senha</p>
 								<input type="password" class="btn-generic-menu-big" name="confirmPassword" maxlength="45" autocomplete="off">
-								<button type="submit" class="btn-generic-big">Cadastrar-me</button>
-								<p class="underline-title"></p> 
+								<button type="submit" class="btn-generic-menu-big">Cadastrar-me</button>
+								<p class="underline-title"></p>
 							</div>
 						</form>
 					</div>

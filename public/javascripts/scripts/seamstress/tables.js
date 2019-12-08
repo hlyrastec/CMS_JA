@@ -12,7 +12,8 @@ function renderSeamstress(seamstresses, pageSize, page){
 	html += "</tr>";
 	for (let i = page * pageSize; i < seamstresses.length && i < (page + 1) * pageSize;i++){
 		html += "<tr>";
-		html += "<td><a onclick='showSeamstress("+seamstresses[i].id+")'>"+seamstresses[i].id+"</a></td>";
+		// html += "<td><a onclick='showSeamstress("+seamstresses[i].id+")'>"+seamstresses[i].id+"</a></td>";
+		html += "<td>"+seamstresses[i].id+"</td>";
 		html += "<td>"+seamstresses[i].name+"</td>";
 		html += "</tr>";
 	};

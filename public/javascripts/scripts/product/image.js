@@ -51,18 +51,20 @@ function productRemoveImage(image_id, product_id){
 	};
 };
 
-function productImagePagination(images, product_id){
+function productImagePagination(images, product_id, admin){
 	let pageSize = 1;
 	let page = 0;
 
 	function paging(){
 		let htmlImage = "";
-		
 	    for (let i = page * pageSize; i < images.length && i < (page + 1) * pageSize;i++){
-			htmlImage += "<img src='"+images[i].url+"' style='width:280px;height:320px;'>";
+			htmlImage += "<img class='image' src='"+images[i].url+"'>";
 			htmlImage += "<div clas='box-1'>";
 			htmlImage += "<br>";
-			htmlImage += "<button class='btn-generic-big' onclick='productRemoveImage("+images[i].id+", "+product_id+")'>Excluir</button>";
+			//if admin
+			if(admin){
+				htmlImage += "<button class='btn-generic-big' onclick='productRemoveImage("+images[i].id+", "+product_id+")'>Excluir</button>";
+			};
 			htmlImage += "</div>";
 		};
 

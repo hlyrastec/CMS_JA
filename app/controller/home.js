@@ -18,11 +18,11 @@ const homeController = {
 		req.session.cookie.maxAge = 1000 * 60 * 30;
 		res.redirect('/');
 	},
-	signup: (req, res) => {
-		if(req.user){
-			res.redirect("/");
+	signup: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm'])){
+			return res.redirect('/');
 		};
-		res.render('signup', { message: req.flash('signupMessage')});
+		res.render('user/signup', { message: req.flash('signupMessage')});
 	},
 	successfulSignup: (req, res) => {
 		req.session.cookie.maxAge = 1000 * 60 * 30;

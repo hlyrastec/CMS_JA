@@ -4,12 +4,12 @@
 	font-family: HelveticaNeue-Light;
 }
 
-header {
+/*header {
 	background-image: linear-gradient(to right, #fff, #999, #888);
 	width: 100%;
 	height: auto;
 	font: 100% Arial;
-	color: #000;
+	color: #3c3c3c;
 	padding: 10px;
 	display: flex;
 	box-sizing: border-box;
@@ -17,9 +17,82 @@ header {
 	flex-wrap: wrap;
 }
 
+
 header a {
-	color: #000;
+	color: #3c3c3c;
 	font-weight: bold;
+}*/
+
+header {
+	background-image: linear-gradient(to right, #e6e6e6, #c8c8c8, #aaaaaa);
+	overflow: hidden;
+	padding: 20px 10px;
+}
+
+header a {
+	cursor: pointer;
+	background-color: #dcdcdc;
+	float: left;
+	color: black;
+	text-align: center;
+	padding: 10px;
+	padding-left: 16px;
+	padding-right: 16px;
+	text-decoration: none;
+	font-size: 18px; 
+	line-height: 17px;
+	border-radius: 4px;
+	margin: 3px;
+}
+
+header select {
+	cursor: pointer;
+	background-color: #c8c8c8;
+	color: #fff;
+	max-width: 130px;
+	width: 31.1%;
+	text-align: center;
+	padding: 3px;
+	text-decoration: none;
+	font-size: 18px; 
+	border-radius: 4px;
+}
+
+header .favicon {
+	cursor: pointer;
+	float: left;
+	padding: 3px;
+	background-color: transparent;
+	box-sizing: border-box;
+	max-width:100px;
+	max-height:100px;
+	width: auto;
+	height: auto;
+}
+
+header .favicon:hover {
+	background-image: linear-gradient(to right, #e6e6e6, #c8c8c8, #aaaaaa);
+	font-size: 25px;
+	font-weight: bold;
+}
+
+header a:hover {
+  background-color: #d2d2d2;
+  color: black;
+}
+
+header a.active {
+  background-color: #4141e9;
+  color: white;
+}
+
+header a.active:hover {
+  background-color: #6e6eff;
+  color: white;
+}
+
+header .right {
+  float: right;
 }
 
 body {
@@ -81,6 +154,14 @@ section .container {
 	box-sizing: border-box;
 	border: 1px solid #e1e1e1;
 	border-radius: 5px;
+}
+
+.image {
+	box-sizing: border-box;
+	max-width:100%;
+	max-height:400px;
+	width: auto;
+	height: auto;
 }
 
 table {

@@ -6,6 +6,7 @@ const seamstressController = require('../controller/seamstress');
 router.get('/index', seamstressController.index);
 
 router.post('/save', seamstressController.save);
+router.get('/list', seamstressController.list);
 router.get('/filter', seamstressController.filter);
 router.get('/id/:id', seamstressController.findById);
 // router.get('/', seamstressController.list);

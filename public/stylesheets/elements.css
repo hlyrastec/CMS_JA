@@ -78,7 +78,7 @@ a {
 	font-size: 12px;
 	width:75px;
 	height: 30px;
-	margin: auto;
+	margin: 3px;
 	font-family: "HelveticaNeue-Light";
 	background-color: #fff;
 	border-radius: 5px;
@@ -88,7 +88,7 @@ a {
 	font-size: 12px;
 	width:150px;
 	height: 30px;
-	margin: auto;
+	margin: 3px;
 	font-family: "HelveticaNeue-Light";
 	background-color: #fff;
 	border-radius: 5px;
@@ -98,7 +98,7 @@ a {
 	font-size: 12px;
 	width:200px;
 	height: 30px;
-	margin: auto;
+	margin: 3px;
 	font-family: "HelveticaNeue-Light";
 	background-color: #fff;
 	border-radius: 5px;
@@ -108,7 +108,7 @@ a {
 	font-size: 12px;
 	width: 50px;
 	height: 30px;
-	margin: auto;
+	margin: 3px;
 	margin-bottom: 10px;
 }
 
@@ -116,7 +116,7 @@ a {
 	font-size: 12px;
 	width: 90px;
 	height: 30px;
-	margin: auto;
+	margin: 3px;
 	margin-bottom: 10px;
 }
 
@@ -124,7 +124,7 @@ a {
 	font-size: 12px;
 	width: 70px;
 	height: 30px;
-	margin: auto;
+	margin: 3px;
 	margin-bottom: 10px;
 }
 
@@ -150,6 +150,30 @@ a {
 	height: 30px;
 	margin: auto;
 	margin-bottom: 10px;
+}
+
+.catalog {
+	background-image: linear-gradient(to right, #e6e6e6, #c8c8c8, #aaaaaa);
+	color: #1e1e1e;
+	font-family: "Times New Roman", Times, serif;
+	font-style: oblique;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.tbl-show-link {
+	background-color: #e6e6e6;
+	width: 100%;
+	height: 100%;
+	border-radius: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.tbl-show-link:hover {
+	background-color: #959595;
 }
 
 .span-generic {

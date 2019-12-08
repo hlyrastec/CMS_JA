@@ -4,12 +4,13 @@
   </head>
   <body>
     <header>
-    <a href="/"><img src="/images/favicon.png" class="favicon"></a>
-    <div>
-    <a href="/signup">Novo colaborador</a>
-    | <a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Sair</a>
-    </div>
+      <div onclick="window.location.href='/'" href="#default" class="favicon"><img class="image" src="/images/favicon.png"></div>
+      <div class="right">
+        <a class="active" href="/signup">Novo colaborador</a>
+        <a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Sair</a>
+      </div>
     </header>
+    <% include ./../partials/nav %>
     <section>
       <div class="container">
         <div class="box-2">

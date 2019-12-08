@@ -31,6 +31,14 @@ const seamstressController = {
 				console.log(err);
 			});
 	},
+	list: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm', 's/a'])){
+			return res.redirect('/');
+		};
+
+		const seamstresses = await Seamstress.list();
+		res.send(seamstresses);
+	},
 	filter: async (req, res) => {
 		if(!await userController.verifyAccess(req, res, ['adm', 's/a'])){
 			return res.redirect('/');

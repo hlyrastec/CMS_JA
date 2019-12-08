@@ -4,7 +4,7 @@ function productColorList(form, session){
 		method: 'get',
 		success: (response) => {
 			var html = "";
-			html += "<option value=''>Color</option>";
+			html += "<option value=''>Cor</option>";
 			response.forEach((color) => {
 				html += "<option value='"+color.shortcut+"'>"+color.name+"</option>";
 			});
