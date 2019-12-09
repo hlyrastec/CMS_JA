@@ -155,10 +155,9 @@ a {
 .catalog {
 	background-image: linear-gradient(to right, #e6e6e6, #c8c8c8, #aaaaaa);
 	color: #1e1e1e;
-	font-family: "Times New Roman", Times, serif;
-	font-style: oblique;
-	font-size: 13px;
-	font-weight: bold;
+	font-family: FreeMono, monospace;
+	font-size: 16px;
+	font-weight: 300;
 }
 
 .tbl-show-link {

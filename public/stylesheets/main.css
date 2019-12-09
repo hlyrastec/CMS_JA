@@ -4,29 +4,10 @@
 	font-family: HelveticaNeue-Light;
 }
 
-/*header {
-	background-image: linear-gradient(to right, #fff, #999, #888);
-	width: 100%;
-	height: auto;
-	font: 100% Arial;
-	color: #3c3c3c;
-	padding: 10px;
-	display: flex;
-	box-sizing: border-box;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
-
-header a {
-	color: #3c3c3c;
-	font-weight: bold;
-}*/
-
 header {
 	background-image: linear-gradient(to right, #e6e6e6, #c8c8c8, #aaaaaa);
 	overflow: hidden;
-	padding: 20px 10px;
+	padding: 5px 5px;
 }
 
 header a {
@@ -48,13 +29,15 @@ header a {
 header select {
 	cursor: pointer;
 	background-color: #c8c8c8;
-	color: #fff;
+	color: #000;
 	max-width: 130px;
 	width: 31.1%;
 	text-align: center;
-	padding: 3px;
+	padding: 5px;
 	text-decoration: none;
-	font-size: 18px; 
+	font-family: Jazz LET, fantasy;
+	font-weight: 400;
+	font-size: 15px;
 	border-radius: 4px;
 }
 
