@@ -78,7 +78,21 @@ const seamstressController = {
 			.catch(err => {
 				return console.log(err);
 			});
-	}
+	},
+	remove: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm'])){
+			return res.redirect('/');
+		};
+
+		Seamstress.remove(req.params.id)
+			.then(async (seamstress) => {
+				console.log(seamstress);
+				res.send(seamstress);
+			})
+			.catch(err => {
+				return console.log(err);
+			});
+	} 
 
 };
 

@@ -25,5 +25,6 @@ router.use("/product", require("./product"));
 router.use("/seamstress", require("./seamstress"));
 router.use("/customer", require("./customer"));
 router.use("/sale", require("./sale"));
+router.use("/financial", require("./financial"));
 
 module.exports = router;

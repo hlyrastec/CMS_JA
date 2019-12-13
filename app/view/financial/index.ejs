@@ -1,0 +1,57 @@
+<html>
+	<head>
+        <% include ./../partials/head %>
+	</head>
+	<body>
+		<header>
+			<div onclick="window.location.href='/'" href="#default" class="favicon"><img class="image" src="/images/favicon.png"></div>
+			<div class="right">
+			<a onclick="let r = confirm('deseja sair?');if(r==true){window.location.href='/logout'}">Sair</a>
+			</div>
+		</header>
+        <% include ./../partials/nav %>
+		<section>
+			<div class="container">
+				<div class="box-2">
+                    <h3 class="underline-title">Entradas</h3><br>
+					<form id="income-create-form" class="box-1">
+						<input type="hidden" name="income_id" id="income-create-id" value="0" autocomplete="off">
+						<select class="btn-generic-big" id="income_category">
+							<option value="">Categoria</option>
+							<% for(i in incomeCategories){ %>
+								<option value="<%= incomeCategories[i].id %>"><%= incomeCategories[i].name %></option>
+							<% }%>
+						</select>
+						<select class="btn-generic-big" id="income_category">
+							<option value="">Origem</option>
+						</select>
+						<input type="number" class="btn-generic-big" step="0.01" value="0.00"/>
+						<input type="text" class="btn-generic-big" placeholder="Observação" />
+						<br>
+						<input type="submit" class="btn-generic-big" id="income-create-submit" value="Cadastrar">
+					</form>
+				</div>
+				<div class="box-2">
+                    <h3 class="underline-title">Saídas</h3><br>
+					<form id="outcome-create-form" class="box-1">
+						<input type="hidden" name="outcome_id" id="outcome-create-id" value="0" autocomplete="off">
+						<select class="btn-generic-big" id="outcome_category">
+							<option value="">Categoria</option>
+						</select>
+						<select class="btn-generic-big" id="outcome_category">
+							<option value="">Despesa</option>
+						</select>
+						<input type="number" class="btn-generic-big" step="0.01" value="0.00"/>
+						<input type="text" class="btn-generic-big" placeholder="Observação" />
+						<br>
+						<input type="submit" class="btn-generic-big" id="outcome-create-submit" value="Cadastrar">
+					</form>
+				</div>
+			</div>
+		</section>
+	</body>
+	<footer>
+        <% include ./../partials/footer %>
+        <% include ./partial %>
+	</footer>
+</html>

@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `product_value`
+-- Table structure for table `financial_income_category`
 --
 
-DROP TABLE IF EXISTS `product_value`;
+DROP TABLE IF EXISTS `financial_income_category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product_value` (
+CREATE TABLE `financial_income_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `value` decimal(7,2) NOT NULL,
+  `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product_value`
+-- Dumping data for table `financial_income_category`
 --
 
-LOCK TABLES `product_value` WRITE;
-/*!40000 ALTER TABLE `product_value` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_value` ENABLE KEYS */;
+LOCK TABLES `financial_income_category` WRITE;
+/*!40000 ALTER TABLE `financial_income_category` DISABLE KEYS */;
+INSERT INTO `financial_income_category` VALUES (1,'Custo Fixo'),(3,'Funcionários'),(2,'Matéria Prima');
+/*!40000 ALTER TABLE `financial_income_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

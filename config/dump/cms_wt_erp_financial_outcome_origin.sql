@@ -16,16 +16,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `product_value`
+-- Table structure for table `financial_outcome_origin`
 --
 
-DROP TABLE IF EXISTS `product_value`;
+DROP TABLE IF EXISTS `financial_outcome_origin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product_value` (
+CREATE TABLE `financial_outcome_origin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `value` decimal(7,2) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
@@ -33,12 +33,12 @@ CREATE TABLE `product_value` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product_value`
+-- Dumping data for table `financial_outcome_origin`
 --
 
-LOCK TABLES `product_value` WRITE;
-/*!40000 ALTER TABLE `product_value` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_value` ENABLE KEYS */;
+LOCK TABLES `financial_outcome_origin` WRITE;
+/*!40000 ALTER TABLE `financial_outcome_origin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `financial_outcome_origin` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-13 17:52:44
+-- Dump completed on 2019-12-13 17:52:46

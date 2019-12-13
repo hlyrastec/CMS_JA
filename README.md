@@ -1,4 +1,9 @@
 # CMS_JA
 
-1 - finish seamstress functions
-2 - create productions register index page
+To do
+
+include admin add image product function
+
+finish seamstress functions (remove)
+
+create index financial page
