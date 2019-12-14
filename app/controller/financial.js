@@ -17,7 +17,7 @@ const financialController = {
 			return res.redirect('/');
 		};
 
-		const incomeCategories = await Financial.incomeCategoriesList();
+		const incomeCategories = await Financial.incomeCategoryList();
 
 		res.render('financial/config', { user: req.user, incomeCategories });
 	},
@@ -46,24 +46,35 @@ const financialController = {
 		};
 
 		const income = {
-			category_name: req.body.category_name
+			category_name: req.query.name
 		};
 
-		Financial.income_category_save(income)
-			.then(row => {
-				res.send({ done: 'A categoria de receita foi cadastrada com sucesso!' });
-			})
-			.catch(err => {
-				console.log(err);
-				res.send({ err: 'Ocorreu um erro ao salvar a categoria de receita!' });
-			});
+		if(req.query.name){
+			Financial.findIncomeCategoryByName(income)
+				.then(categories => {
+					res.send( categories );
+				})
+				.catch(err => {
+					console.log(err);
+					res.send({ err: 'Ocorreu um erro ao filtrar as categorias de receita!' });
+				});
+		} else {
+			Financial.incomeCategoryList()
+				.then(categories => {
+					res.send( categories );
+				})
+				.catch(err => {
+					console.log(err);
+					res.send({ err: 'Ocorreu um erro ao filtrar as categorias de receita!' });
+				});
+		};
 	},
 	incomeCategoryList: async (req, res) => {
 		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
 
-		Financial.income_category_save(income)
+		Financial.incomeCategoryList(income)
 			.then(row => {
 				res.send({ done: 'A categoria de receita foi cadastrada com sucesso!' });
 			})

@@ -10,13 +10,13 @@ Financial.incomeCategorySave = async (income) => {
 	return db(query);
 };
 
-Financial.incomeCategoriesList = async () => {
+Financial.incomeCategoryList = async () => {
 	let query = "SELECT * FROM cms_wt_erp.financial_income_category ORDER BY name ASC;";
 	return db(query);
 };
 
-Financial.list = async () => {
-	let query = "SELECT * FROM cms_wt_erp.seamstress ORDER BY name ASC;";
+Financial.findIncomeCategoryByName = async (income) => {
+	let query = "SELECT * FROM cms_wt_erp.financial_income_category WHERE name like '%"+income.category_name+"%' ORDER BY name ASC;";
 	return db(query);
 };
 
