@@ -8,7 +8,7 @@ const financialController = {
 			return res.redirect('/');
 		};
 
-		const incomeCategories = await Financial.incomeCategoriesList();
+		const incomeCategories = await Financial.incomeCategoryList();
 
 		res.render('financial/index', { user: req.user, incomeCategories });
 	},
@@ -81,6 +81,22 @@ const financialController = {
 			.catch(err => {
 				console.log(err);
 				res.send({ err: 'Ocorreu um erro ao salvar a categoria de receita!' });
+			});
+	},
+	incomeCategoryRemove: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
+		};
+
+		console.log(req.query.id);
+		
+		Financial.incomeCategoryRemove(req.query.id)
+			.then(result => {
+				console.log(result);
+				res.send({ done: "Categoria removida com sucesso!" });
+			})
+			.catch(err => {
+				res.send({ done: "Ocorreu um erro ao remover a categoria, favor contatar o suporte." });
 			});
 	}
 };

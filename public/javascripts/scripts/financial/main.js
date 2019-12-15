@@ -31,6 +31,7 @@ $(function(){
 
 				document.getElementById("income-category-create-form").elements.namedItem('category_name').value = "";
 				document.getElementById('income-category-create-submit').disabled = false;
+				$("#income-category-filter-form").submit();
 			}
 		});
 	});
@@ -119,27 +120,29 @@ function fillCategorySelect(location){
 };
 
 function removeIncomeCategory(id){
-	$.ajax({
-		url: '/financial/incomecategory/remove/id?'+id,
-		method: 'post',
-		data: $("#income-category-create-form").serialize(),
-		success: (response) => {
-			if(response.unauthorized){
-				alert(response.unauthorized);
-				window.location.href = '/login';
-				return;
-			};
-			
-			if(response.msg){
-				alert(response.msg);
-				document.getElementById('product-create-submit').disabled = false;
-				return;
-			};
+	let r = confirm('Deseja realmente excluir o produto?');
+	
+	if(r){
+		$.ajax({
+			url: '/financial/incomecategory/remove?id='+id,
+			method: 'delete',
+			success: (response) => {
+				if(response.unauthorized){
+					alert(response.unauthorized);
+					window.location.href = '/login';
+					return;
+				};
+				
+				if(response.msg){
+					alert(response.msg);
+					document.getElementById('product-create-submit').disabled = false;
+					return;
+				};
 
-			alert(response.done);
+				alert(response.done);
 
-			document.getElementById("income-category-create-form").elements.namedItem('category_name').value = "";
-			document.getElementById('income-category-create-submit').disabled = false;
-		}
-	});
+				$("#income-category-filter-form").submit();
+			}
+		});
+	};
 };

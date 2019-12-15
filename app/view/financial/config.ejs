@@ -19,6 +19,7 @@
 						<input type="text" class="btn-generic-big" name="category_name" placeholder="Nome da categoria" autocomplete="off">
 						<input type="submit" class="btn-generic-big" id="income-category-create-submit" value="Cadastrar">
 					</form>
+	                <button onclick="displayIncomeCategories()" id="displayIncomeCategoryBtn" autocomplete="off" disabled>&darr;&darr;</button>
 					<form id="income-category-filter-form" class="box-1">
                     	<h4 class="underline-title">Filtrar Categorias de Receita</h4><br>
 						<input type="text" name="category_name" class="btn-generic-big" placeholder="Nome da categoria" autocomplete="off">
@@ -29,7 +30,7 @@
 						<br>
 						<button id="incomeCategoryPrevious" autocomplete="off" disabled>&lsaquo;&lsaquo;</button>
 	                    <span id="incomeCategoryPageNumber"></span>
-	                    <button id="incomeCategoryNext" autocomplete="off" disabled>&rsaquo;&rsaquo;</button>
+	                    <button id="incomeCategoryNext" autocomplete="off" disabled>&rsaquo;&rsaquo;</button><br><br>
 					</div>
 				</div>
 				<div class="box-2">

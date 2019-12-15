@@ -20,13 +20,8 @@ Financial.findIncomeCategoryByName = async (income) => {
 	return db(query);
 };
 
-Financial.findByName = async (name) => {
-	let query = "SELECT * FROM cms_wt_erp.seamstress WHERE name like '%"+name+"%' ORDER BY name ASC;";
-	return db(query);
-};
-
-Financial.remove = async (id) => {
-	let query = "DELETE * FROM cms_wt_erp.seamstress WHERE "+id+";";
+Financial.incomeCategoryRemove = async (id) => {
+	let query = "DELETE FROM cms_wt_erp.financial_income_category WHERE id='"+id+"';";
 	return db(query);
 };
 
