@@ -74,12 +74,12 @@ const financialController = {
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
 
-		Financial.incomeCategoryList(income)
-			.then(row => {
-				res.send({ done: 'A categoria de receita foi cadastrada com sucesso!' });
+		Financial.incomeCategoryList()
+			.then(incomeCategories => {
+				console.log(incomeCategories);
+				res.send(incomeCategories);
 			})
 			.catch(err => {
-				console.log(err);
 				res.send({ err: 'Ocorreu um erro ao salvar a categoria de receita!' });
 			});
 	},
@@ -88,11 +88,8 @@ const financialController = {
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
 
-		console.log(req.query.id);
-		
 		Financial.incomeCategoryRemove(req.query.id)
 			.then(result => {
-				console.log(result);
 				res.send({ done: "Categoria removida com sucesso!" });
 			})
 			.catch(err => {
