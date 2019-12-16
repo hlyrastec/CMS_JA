@@ -6,4 +6,4 @@ include admin add image product function
 
 finish seamstress functions (remove)
 
-remove income category
+alter origin same name table

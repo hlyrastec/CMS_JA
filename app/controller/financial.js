@@ -26,17 +26,15 @@ const financialController = {
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
 
-		const income = {
-			category_name: req.body.category_name
+		const category = {
+			name: req.body.category_name
 		};
 
-		console.log(income.category_name);
-		Financial.incomeCategorySave(income)
+		Financial.incomeCategorySave(category)
 			.then(row => {
 				res.send({ done: 'A categoria de receita foi cadastrada com sucesso!' });
 			})
 			.catch(err => {
-				console.log(err);
 				res.send({ err: 'Ocorreu um erro ao salvar a categoria de receita!' });
 			});
 	},
@@ -45,17 +43,16 @@ const financialController = {
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
 
-		const income = {
-			category_name: req.query.name
+		const category = {
+			name: req.query.name
 		};
 
 		if(req.query.name){
-			Financial.findIncomeCategoryByName(income)
+			Financial.findIncomeCategoryByName(category)
 				.then(categories => {
 					res.send( categories );
 				})
 				.catch(err => {
-					console.log(err);
 					res.send({ err: 'Ocorreu um erro ao filtrar as categorias de receita!' });
 				});
 		} else {
@@ -64,7 +61,6 @@ const financialController = {
 					res.send( categories );
 				})
 				.catch(err => {
-					console.log(err);
 					res.send({ err: 'Ocorreu um erro ao filtrar as categorias de receita!' });
 				});
 		};
@@ -76,7 +72,6 @@ const financialController = {
 
 		Financial.incomeCategoryList()
 			.then(incomeCategories => {
-				console.log(incomeCategories);
 				res.send(incomeCategories);
 			})
 			.catch(err => {
@@ -91,6 +86,69 @@ const financialController = {
 		Financial.incomeCategoryRemove(req.query.id)
 			.then(result => {
 				res.send({ done: "Categoria removida com sucesso!" });
+			})
+			.catch(err => {
+				res.send({ done: "Ocorreu um erro ao remover a categoria, favor contatar o suporte." });
+			});
+	},
+	incomeOriginSave: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
+		};
+
+		const origin = {
+			category_id: req.body.category_id,
+			name: req.body.origin_name
+		};
+
+		console.log(origin);
+
+		Financial.incomeOriginSave(origin)
+			.then(result => {
+				res.send({ done: "Categoria cadastrada com sucesso!" });
+			})
+			.catch(err => {
+				res.send({ msg: "Ocorreu um erro ao cadastrar a origem da receita!" });
+			});
+	},
+	incomeOriginFilterByCategory: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
+		};
+
+		console.log(req.query.id);
+
+		Financial.incomeOriginFindByCategory(req.query.id)
+			.then(incomeOrigins => {
+				res.send(incomeOrigins);
+			})
+			.catch(err => {
+				res.send({ msg: "Ocorreu um erro ao cadastrar a origem da receita!" });
+			});
+	},
+	incomeOriginFilter: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
+		};
+
+		console.log(req.query.id);
+
+		Financial.incomeOriginFindById(req.query.id)
+			.then(origin => {
+				res.send(origin);
+			})
+			.catch(err => {
+				res.send({ msg: "Ocorreu um erro ao cadastrar a origem da receita!" });
+			});
+	},
+	incomeOriginRemove: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
+		};
+
+		Financial.incomeOriginRemove(req.query.id)
+			.then(result => {
+				res.send({ done: "Origem removida com sucesso!" });
 			})
 			.catch(err => {
 				res.send({ done: "Ocorreu um erro ao remover a categoria, favor contatar o suporte." });
