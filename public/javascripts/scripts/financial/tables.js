@@ -1,15 +1,4 @@
 // ----------------------------
-// Generic functions
-// ----------------------------
-
-function clearTable(table, location){
-	document.getElementById(table).innerHTML = "NENHUM REGISTRO ENCONTRADO";
-	$('#'+location+'Previous').prop('disabled');
-	$('#'+location+'Next').prop('disabled');
-	$('#'+location+'PageNumber').text('0');
-};
-
-// ----------------------------
 // Income functions
 // ----------------------------
 

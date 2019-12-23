@@ -6,7 +6,7 @@ const homeController = {
 		if(req.user){
 			return res.render('home', { user: req.user });
 		};
-		res.render('index', { message: req.flash('loginMessage')});
+		res.render('index');
 	},
 	login: (req, res) => {
 		if(req.user){
@@ -15,7 +15,6 @@ const homeController = {
 		res.render('login', { message: req.flash('loginMessage')});
 	},
 	successfulLogin: (req, res) => {
-		// req.session.cookie.maxAge = 1000 * 10;
 		res.redirect('/');
 	},
 	signup: async (req, res) => {
@@ -25,7 +24,6 @@ const homeController = {
 		res.render('user/signup', { message: req.flash('signupMessage')});
 	},
 	successfulSignup: (req, res) => {
-		// req.session.cookie.maxAge = 1000 * 10;
 		res.redirect('/');
 	},
 	logout: (req, res) => {

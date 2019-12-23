@@ -2,13 +2,6 @@ function hideProduct(){
 	document.getElementById('product-show-box').style.display = "none";
 };
 
-function clearProductTable(location){
-	document.getElementById("product-tbl").innerHTML = "SEM PRODUTOS COM ESSAS CORES OU CATEGORIAS";
-	$('#productPrevious').prop('disabled');
-	$('#productNext').prop('disabled');
-	$('#productPageNumber').text('0');
-};
-
 //
 	// Mostrar a tabela de produtos na área de administração
 //

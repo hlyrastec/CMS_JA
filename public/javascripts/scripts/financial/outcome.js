@@ -87,11 +87,18 @@ $(function(){
 				const pageSize = 20;
 				const page = 0;
 
+				var totalValue = 0;
+				for(i in outcomes){
+					totalValue += outcomes[i].value;
+				};
+
+				document.getElementById('outcome_totalValue').innerHTML = totalValue;
+
 				function paging(){
 					if(outcomes.length){
 						renderOutcomeTable(outcomes, pageSize, page);
 					} else {
-						clearTable('outcome-report-tbl', 'outcomeReport');
+						lib.clearTable('outcome-report-tbl', 'outcomeReport');
 					};
 				};
 
@@ -188,7 +195,7 @@ $(function(){
 					if(outcomeCategories.length){
 						renderOutcomeCategoryTable(outcomeCategories, pageSize, page);
 					} else {
-						clearTable("outcome-category-tbl", "outcomeCategory");
+						lib.clearTable("outcome-category-tbl", "outcomeCategory");
 					};
 				};
 
@@ -283,7 +290,7 @@ $(function(){
 						if(outcomeOrigins.length){
 							renderOutcomeOriginTable(outcomeOrigins, pageSize, page);
 						} else {
-							clearTable("outcome-origin-tbl", "outcomeOrigin");
+							lib.clearTable("outcome-origin-tbl", "outcomeOrigin");
 						};
 					};
 
@@ -316,7 +323,7 @@ $(function(){
 			});
 		} else {
 			alert('É necessário selecionar uma categoria');
-			clearTable('outcome-origin-tbl', 'outcomeOrigin');
+			lib.clearTable('outcome-origin-tbl', 'outcomeOrigin');
 			return btn.attr('disabled', false);
 
 		}
@@ -348,7 +355,7 @@ function removeOutcomeCategory(id){
 				fillSelect('Categoria','outcome-origin-create-select','/financial/outcomecategory/list', 'get')
 				fillSelect('Categoria','outcome-category-filter-select','/financial/outcomecategory/list', 'get')
 				
-				clearTable("outcome-origin-tbl", "outcomeOrigin");
+				lib.clearTable("outcome-origin-tbl", "outcomeOrigin");
 				
 				$("#outcome-category-filter-form").submit();
 			}

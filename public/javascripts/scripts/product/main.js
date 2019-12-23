@@ -60,14 +60,13 @@ $(function(){
 
 				function paging(){
 					if(products.length){
-						if(session==="admin"){
+						if(session==="productAdmin"){
 							renderAdminProducts(products, pageSize, page);
-						} else if (session==="catalog"){
+						} else if (session==="productCatalog"){
 							renderCatalogProducts(products, pageSize, page);
-
 						}
 					} else {
-						clearProductTable(products.location);
+						lib.clearTable();
 					};
 				};
 

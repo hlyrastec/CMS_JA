@@ -9,6 +9,8 @@ router.get('/index', financialController.index);
 // income routes
 // ------------------
 
+router.post('/balance', financialController.balance);
+
 router.get('/income', financialController.income);
 router.post('/income/save', financialController.incomeSave);
 router.post('/income/filter', financialController.incomeFilter);

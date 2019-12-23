@@ -18,26 +18,13 @@ $(function(){
 					return document.getElementById('product-create-submit').disabled = false;
 				};
 
-				document.getElementById('income-report-submit').disabled = false;
+				document.getElementById('balance_value').innerHTML = ""+response.incomeValue[0].totalValue+" - "+response.outcomeValue[0].totalValue+" = "+Math.round((response.incomeValue[0].totalValue-response.outcomeValue[0].totalValue) * 100) / 100;
+
+				document.getElementById('balance-report-submit').disabled = false;
 			}
 		});
 	});
 });
-
-function fillSelect(selectLocation, location, route, method){
-	$.ajax({
-		url: route,
-		method: method,
-		success: (response) => {
-			var select = document.getElementById(location);
-			select.innerHTML = "";
-			select.innerHTML += "<option value='0'>"+selectLocation+"</option>"
-			for(i in response){
-				select.innerHTML += "<option value='"+response[i].id+"'>"+response[i].name+"</option>"
-			};
-		}
-	});
-};
 
 function displayFinancialForms(form, btn){
 	let financialForm = document.getElementById(form);

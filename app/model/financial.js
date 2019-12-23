@@ -20,8 +20,13 @@ Financial.incomeSave = async (income) => {
 	return db(query);
 };
 
-Financial.incomeFilter = async (params, values) => {
-	let query = lib.filterQuery(params, values, "cms_wt_erp", "financial_income", "id", "DESC");
+Financial.incomeFilter = async (periodStart, periodEnd, params, values) => {
+	let query = lib.filterByPeriod(periodStart, periodEnd, params, values, "cms_wt_erp", "financial_income", "id", "DESC");
+	return db(query);
+};
+
+Financial.incomeSum = async (periodStart, periodEnd, params, values) => {
+	let query = lib.sumByPeriod(periodStart, periodEnd, 'value', params, values, "cms_wt_erp", "financial_income", "id", "DESC");
 	return db(query);
 };
 
@@ -88,8 +93,13 @@ Financial.outcomeSave = async (outcome) => {
 	return db(query);
 };
 
-Financial.outcomeFilter = async (params, values) => {
-	let query = lib.filterQuery(params, values, "cms_wt_erp", "financial_outcome", "id", "DESC");
+Financial.outcomeFilter = async (periodStart, periodEnd, params, values) => {
+	let query = lib.filterByPeriod(periodStart, periodEnd, params, values, "cms_wt_erp", "financial_outcome", "id", "DESC");
+	return db(query);
+};
+
+Financial.outcomeSum = async (periodStart, periodEnd, params, values) => {
+	let query = lib.sumByPeriod(periodStart, periodEnd, 'value', params, values, "cms_wt_erp", "financial_outcome", "id", "DESC");
 	return db(query);
 };
 

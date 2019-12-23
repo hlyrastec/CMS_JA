@@ -87,11 +87,18 @@ $(function(){
 				const pageSize = 10;
 				const page = 0;
 
+				var totalValue = 0;
+				for(i in incomes){
+					totalValue += incomes[i].value;
+				};
+
+				document.getElementById('income_totalValue').innerHTML = totalValue;
+
 				function paging(){
 					if(incomes.length){
 						renderIncomeTable(incomes, pageSize, page);
 					} else {
-						clearTable('income-report-tbl', 'incomeReport');
+						lib.clearTable('income-report-tbl', 'incomeReport');
 					};
 				};
 
@@ -159,8 +166,8 @@ $(function(){
 				document.getElementById("income-category-create-form").elements.namedItem('category_name').value = "";
 				document.getElementById('income-category-create-submit').disabled = false;
 
-				fillSelect('Categoria','income-origin-create-select','/financial/incomecategory/list', 'get');
-				fillSelect('Categoria','income-category-filter-select','/financial/incomecategory/list', 'get');
+				lib.fillSelect('Categoria','income-origin-create-select','/financial/incomecategory/list', 'get');
+				lib.fillSelect('Categoria','income-category-filter-select','/financial/incomecategory/list', 'get');
 
 				$("#income-category-filter-form").submit();
 			}
@@ -188,7 +195,7 @@ $(function(){
 					if(incomeCategories.length){
 						renderIncomeCategoryTable(incomeCategories, pageSize, page);
 					} else {
-						clearTable('income-category-tbl', 'incomeCategory');
+						lib.clearTable('income-category-tbl', 'incomeCategory');
 					};
 				};
 
@@ -283,7 +290,7 @@ $(function(){
 						if(incomeOrigins.length){
 							renderIncomeOriginTable(incomeOrigins, pageSize, page);
 						} else {
-							clearTable('income-origin-tbl', 'incomeOrigin');
+							lib.clearTable('income-origin-tbl', 'incomeOrigin');
 						};
 					};
 
@@ -316,7 +323,7 @@ $(function(){
 			});
 		} else {
 			alert('É necessário selecionar uma categoria');
-			clearTable('income-origin-tbl', 'incomeOrigin');
+			lib.clearTable('income-origin-tbl', 'incomeOrigin');
 			return btn.attr('disabled', false);
 		}
 	});
@@ -344,8 +351,8 @@ function removeIncomeCategory(id){
 
 				alert(response.done);
 
-				fillSelect('Categoria','income-origin-create-select','/financial/incomecategory/list', 'get');
-				fillSelect('Categoria','income-category-filter-select','/financial/incomecategory/list', 'get');
+				lib.fillSelect('Categoria','income-origin-create-select','/financial/incomecategory/list', 'get');
+				lib.fillSelect('Categoria','income-category-filter-select','/financial/incomecategory/list', 'get');
 
 				$("#income-category-filter-form").submit();
 				$("#income-origin-filter-form").submit();
