@@ -155,12 +155,21 @@ a {
 	margin-bottom: 10px;
 }
 
+.price {
+	color: rgba(0, 0, 0, 1);
+	font-family: Garamond,serif; 
+	font-weight: bold;
+	font-size: 15px;
+}
+
 .catalog {
 	background-image: linear-gradient(to right, #e6e6e6, #c8c8c8, #aaaaaa);
-	color: #1e1e1e;
-	font-family: FreeMono, monospace;
+	color: rgba(0, 0, 0, 0.7);
+	font-family: Garamond,serif; 
+	/*font-family: FreeMono, monospace;*/
 	font-size: 16px;
-	font-weight: 300;
+	font-weight: bold;
+	font: 50%;
 }
 
 .tbl-show-link {

@@ -1,4 +1,131 @@
 $(function(){
+	$("#income-create-form").on('submit', (event) => {
+		event.preventDefault();
+		document.getElementById('income-create-submit').disabled = true;
+
+		const category = document.getElementById("income-create-form").elements.namedItem('income_category');
+		const origin = document.getElementById("income-create-form").elements.namedItem('income_origin');
+		const value = document.getElementById("income-create-form").elements.namedItem('income_value').value;
+		const obs = document.getElementById("income-create-form").elements.namedItem('income_obs').value;
+
+		const category_id = category.options[category.selectedIndex].value;
+		const category_name = category.options[category.selectedIndex].text;
+
+		const origin_id = origin.options[origin.selectedIndex].value;
+		const origin_name = origin.options[origin.selectedIndex].text;
+
+		if(category_id == "0"){
+			alert("É necessário selecionar uma categoria!");
+			return document.getElementById('income-create-submit').disabled = false;
+		};
+
+		if(origin_id == "0"){
+			alert("É necessário selecionar uma origem!");
+			return document.getElementById('income-create-submit').disabled = false;
+		};
+
+		if(value < 0.01){
+			alert("É necessário cadastrar o valor da receita!");
+			return document.getElementById('income-create-submit').disabled = false;	
+		};
+
+		$.ajax({
+			url: '/financial/income/save',
+			method: 'post',
+			data: {
+				category_id: category_id,
+				category_name: category_name,
+				origin_id: origin_id,
+				origin_name: origin_name,
+				value: value,
+				obs: obs
+			},
+			success: (response) => {
+				if(response.unauthorized){
+					alert(response.unauthorized);
+					window.location.href = '/login';
+					return;
+				};
+				
+				if(response.msg){
+					alert(response.msg);
+					document.getElementById('income-create-submit').disabled = false;
+					return;
+				};
+
+				alert(response.done);
+
+				document.getElementById("income-create-form").elements.namedItem('income_category').value = "0";
+				document.getElementById("income-create-form").elements.namedItem('income_origin').value = "0";
+				document.getElementById("income-create-form").elements.namedItem('income_value').value = "0.00";
+				document.getElementById("income-create-form").elements.namedItem('income_obs').value = "";
+
+				return document.getElementById('income-create-submit').disabled = false;	
+			}
+		});
+	});
+
+	$("#income-report-form").on('submit', (event) => {
+		event.preventDefault();
+		document.getElementById('income-report-submit').disabled = true;
+
+		$.ajax({
+			url: '/financial/income/filter',
+			method: 'post',
+			data: $("#income-report-form").serialize(),
+			success: (incomes) => {
+				if(incomes.unauthorized){
+					alert(incomes.unauthorized);
+					return window.location.href = '/login';
+				};
+				
+				if(incomes.msg){
+					alert(incomes.msg);
+					return document.getElementById('product-create-submit').disabled = false;
+				};
+
+				const pageSize = 10;
+				const page = 0;
+
+				function paging(){
+					if(incomes.length){
+						renderIncomeTable(incomes, pageSize, page);
+					} else {
+						clearTable('income-report-tbl', 'incomeReport');
+					};
+				};
+
+				document.getElementById('income-report-submit').disabled = false;
+
+				function buttonsPaging(){
+					$('#incomeReportNext').prop('disabled', incomes.length <= pageSize || page >= incomes.length / pageSize - 1);
+					$('#incomeReportPrevious').prop('disabled', incomes.length <= pageSize || page == 0);
+				};
+
+				$(function(){
+				    $('#incomeReportNext').click(function(){
+				        if(page < incomes.length / pageSize - 1){
+				            page++;
+				            paging();
+				            buttonsPaging();
+				        };
+				    });
+				    $('#incomeReportPrevious').click(function(){
+				        if(page > 0){
+				            page--;
+				            paging();
+				            buttonsPaging();
+				        };
+				    });
+				    paging();
+				    buttonsPaging();
+				});
+
+				document.getElementById('income-report-submit').disabled = false;
+			}
+		});
+	});
+
 	$("#income-category-create-form").on('submit', (event) => {
 		event.preventDefault();
 		document.getElementById('income-category-create-submit').disabled = true;
@@ -32,8 +159,8 @@ $(function(){
 				document.getElementById("income-category-create-form").elements.namedItem('category_name').value = "";
 				document.getElementById('income-category-create-submit').disabled = false;
 
-				fillSelect('income-origin-create-select','/financial/incomecategory/list', 'get');
-				fillSelect('income-origin-filter-select','/financial/incomecategory/list', 'get')
+				fillSelect('Categoria','income-origin-create-select','/financial/incomecategory/list', 'get');
+				fillSelect('Categoria','income-category-filter-select','/financial/incomecategory/list', 'get');
 
 				$("#income-category-filter-form").submit();
 			}
@@ -61,7 +188,7 @@ $(function(){
 					if(incomeCategories.length){
 						renderIncomeCategoryTable(incomeCategories, pageSize, page);
 					} else {
-						clearIncomeCategoryTable();
+						clearTable('income-category-tbl', 'incomeCategory');
 					};
 				};
 
@@ -98,10 +225,10 @@ $(function(){
 		event.preventDefault();
 		document.getElementById('income-origin-create-submit').disabled = true;
 
-		let category_id = document.getElementById("income-origin-create-form").elements.namedItem('category_id').value;
-		let origin_name = document.getElementById("income-origin-create-form").elements.namedItem('origin_name').value;
+		const category_id = document.getElementById("income-origin-create-form").elements.namedItem('category_id').value;
+		const origin_name = document.getElementById("income-origin-create-form").elements.namedItem('origin_name').value;
 
-		if(!category_id){
+		if(category_id == "0"){
 			alert('É necessário selecionar a categoria para cadastrar a origem!');
 			return document.getElementById('income-origin-create-submit').disabled = false;
 		};
@@ -130,25 +257,18 @@ $(function(){
 
 				document.getElementById("income-origin-create-form").elements.namedItem('origin_name').value = "";
 				document.getElementById('income-origin-create-submit').disabled = false;
-
-				// fillSelect('income-origin-category-select','/financial/incomeorigin/list', 'get');
-
-				// $("#income-origin-filter-form").submit();
 			}
 		});
 	});
 	
 	$("#income-origin-filter-form").on('submit', (event) => {
 		event.preventDefault();
-		let btn = $(this);btn.attr('disabled', true);
-		let category_id = document.getElementById("income-origin-filter-form").elements.namedItem('category_id').value;
-		let origin_id = document.getElementById("income-origin-filter-form").elements.namedItem('origin_id').value;
+		const btn = $(this);btn.attr('disabled', true);
+		const category_id = document.getElementById("income-origin-filter-form").elements.namedItem('category_id').value;
 
 		if(category_id){
-			console.log(category_id);
-			console.log(origin_id);
 			$.ajax({
-				url: "/financial/incomeorigin/filter?id="+origin_id,
+				url: "/financial/incomeorigin/filterbycategory?id="+category_id,
 				method: 'get',
 				success: (incomeOrigins) => {
 					if(incomeOrigins.unauthorized){
@@ -156,14 +276,14 @@ $(function(){
 						return window.location.href = '/login';
 					};
 
-					let pageSize = 10;
-					let page = 0;
+					const pageSize = 10;
+					const page = 0;
 
 					function paging(){
 						if(incomeOrigins.length){
 							renderIncomeOriginTable(incomeOrigins, pageSize, page);
 						} else {
-							clearIncomeOriginTable();
+							clearTable('income-origin-tbl', 'incomeOrigin');
 						};
 					};
 
@@ -196,14 +316,14 @@ $(function(){
 			});
 		} else {
 			alert('É necessário selecionar uma categoria');
+			clearTable('income-origin-tbl', 'incomeOrigin');
 			return btn.attr('disabled', false);
-
 		}
 	});
 });
 
 function removeIncomeCategory(id){
-	let r = confirm('Deseja realmente excluir o produto?');
+	const r = confirm('Deseja realmente excluir esta categoria?');
 	
 	if(r){
 		$.ajax({
@@ -224,17 +344,18 @@ function removeIncomeCategory(id){
 
 				alert(response.done);
 
-				fillSelect('income-origin-create-select','/financial/incomecategory/list', 'get')
-				fillSelect('income-origin-filter-select','/financial/incomecategory/list', 'get')
-				
+				fillSelect('Categoria','income-origin-create-select','/financial/incomecategory/list', 'get');
+				fillSelect('Categoria','income-category-filter-select','/financial/incomecategory/list', 'get');
+
 				$("#income-category-filter-form").submit();
+				$("#income-origin-filter-form").submit();
 			}
 		});
 	};
 };
 
 function removeIncomeOrigin(id){
-	let r = confirm('Deseja realmente excluir esta origem?');
+	const r = confirm('Deseja realmente excluir esta origem?');
 	
 	if(r){
 		$.ajax({
@@ -255,9 +376,7 @@ function removeIncomeOrigin(id){
 
 				alert(response.done);
 
-				fillSelect('income-origin-filter-select', '/financial/incomeorigin/filterbycategory?id=0', 'get');
-				
-				// $("#income-category-filter-form").submit();
+				$("#income-origin-filter-form").submit();
 			}
 		});
 	};

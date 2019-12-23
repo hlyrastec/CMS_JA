@@ -1,5 +1,6 @@
 const express = require('express');
 const session  = require('express-session');
+const connect = require('connect');
 const path = require('path');
 const dotenv = require('dotenv');
 const app = express();
@@ -21,7 +22,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'vidyapathaisalwaysrunning',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 5 },
+    rolling: true
 }));
 
 app.use(passport.initialize());

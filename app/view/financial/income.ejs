@@ -51,14 +51,11 @@
 					<div id="income-origin-filter-div" style="display:none">
 						<form id="income-origin-filter-form" class="box-1">
 	                    	<h4 class="underline-title">Filtrar Origens de receita</h4><br>
-	                    	<select class="btn-generic-medium" name="category_id" id="income-category-filter-select" onchange="this.options[this.selectedIndex].value && fillSelect('income-origin-filter-select', '/financial/incomeorigin/filterbycategory?id='+this.options[this.selectedIndex].value, 'get');">
+	                    	<select class="btn-generic-medium" name="category_id" id="income-category-filter-select">
 							    <option value="">Categoria</option>
 								<% for(i in incomeCategories){ %>
 									<option value="<%= incomeCategories[i].id %>"><%= incomeCategories[i].name %></option>
 								<% }%>
-							</select>
-							<select class="btn-generic-medium" name="origin_id" id="income-origin-filter-select">
-								<option value="">Origem</option>
 							</select>
 							<input type="submit" class="btn-generic-small" id="income-origin-filter-submit" value="Filtrar">
 						</form>

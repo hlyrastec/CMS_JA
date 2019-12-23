@@ -1,8 +1,40 @@
-function clearIncomeCategoryTable(location){
-	document.getElementById("income-category-tbl").innerHTML = "NENHUMA CATEGORIA CADASTRADA";
-	$('#incomeCategoryPrevious').prop('disabled');
-	$('#incomeCategoryNext').prop('disabled');
-	$('#incomeCategoryPageNumber').text('0');
+// ----------------------------
+// Generic functions
+// ----------------------------
+
+function clearTable(table, location){
+	document.getElementById(table).innerHTML = "NENHUM REGISTRO ENCONTRADO";
+	$('#'+location+'Previous').prop('disabled');
+	$('#'+location+'Next').prop('disabled');
+	$('#'+location+'PageNumber').text('0');
+};
+
+// ----------------------------
+// Income functions
+// ----------------------------
+
+function renderIncomeTable(incomes, pageSize, page){
+	var html = "<tr>";
+	html += "<td>Id</td>";
+	html += "<td>Data</td>";
+	html += "<td>Categoria</td>";
+	html += "<td>Origem</td>";
+	html += "<td>Valor</td>";
+	html += "<td>Usuário</td>";
+	html += "</tr>";
+	for (let i = page * pageSize; i < incomes.length && i < (page + 1) * pageSize;i++){
+		html += "<tr>";
+		html += "<td>"+incomes[i].id+"</td>";
+		html += "<td>"+incomes[i].date+"</td>";
+		html += "<td>"+incomes[i].category_name+"</td>";
+		html += "<td>"+incomes[i].origin_name+"</td>";
+		html += "<td>"+incomes[i].value+"</td>";
+		html += "<td>"+incomes[i].user_name+"</td>";
+		html += "</tr>";
+	};
+	document.getElementById('income-report-tbl').innerHTML = html;
+	document.getElementById('income-report-div').style.display = 'block';
+	$('#incomeReportPageNumber').text('' + (page + 1) + ' de ' + Math.ceil(incomes.length / pageSize));
 };
 
 function renderIncomeCategoryTable(incomeCategories, pageSize, page){
@@ -23,13 +55,6 @@ function renderIncomeCategoryTable(incomeCategories, pageSize, page){
 	$('#incomeCategoryPageNumber').text('' + (page + 1) + ' de ' + Math.ceil(incomeCategories.length / pageSize));
 };
 
-function clearIncomeOriginTable(location){
-	document.getElementById("income-origin-tbl").innerHTML = "NENHUMA CATEGORIA CADASTRADA";
-	$('#incomeOriginPrevious').prop('disabled');
-	$('#incomeOriginNext').prop('disabled');
-	$('#incomeOriginPageNumber').text('0');
-};
-
 function renderIncomeOriginTable(incomeOrigins, pageSize, page){
 	var html = "<tr>";
 	html += "<td>Id</td>";
@@ -46,4 +71,68 @@ function renderIncomeOriginTable(incomeOrigins, pageSize, page){
 	document.getElementById('income-origin-tbl').innerHTML = html;
 	document.getElementById('income-origin-div').style.display = 'block';
 	$('#incomeOriginPageNumber').text('' + (page + 1) + ' de ' + Math.ceil(incomeOrigins.length / pageSize));
+};
+
+// ----------------------------
+// Outcome functions
+// ----------------------------
+
+function renderOutcomeTable(outcomes, pageSize, page){
+	var html = "<tr>";
+	html += "<td>Id</td>";
+	html += "<td>Data</td>";
+	html += "<td>Categoria</td>";
+	html += "<td>Origem</td>";
+	html += "<td>Valor</td>";
+	html += "<td>Usuário</td>";
+	html += "</tr>";
+	for (let i = page * pageSize; i < outcomes.length && i < (page + 1) * pageSize;i++){
+		html += "<tr>";
+		html += "<td>"+outcomes[i].id+"</td>";
+		html += "<td>"+outcomes[i].date+"</td>";
+		html += "<td>"+outcomes[i].category_name+"</td>";
+		html += "<td>"+outcomes[i].origin_name+"</td>";
+		html += "<td>"+outcomes[i].value+"</td>";
+		html += "<td>"+outcomes[i].user_name+"</td>";
+		html += "</tr>";
+	};
+	document.getElementById('outcome-report-tbl').innerHTML = html;
+	document.getElementById('outcome-report-div').style.display = 'block';
+	$('#outcomeReportPageNumber').text('' + (page + 1) + ' de ' + Math.ceil(outcomes.length / pageSize));
+};
+
+function renderOutcomeCategoryTable(outcomeCategories, pageSize, page){
+	var html = "<tr>";
+	html += "<td>Id</td>";
+	html += "<td>Nome</td>";
+	html += "</tr>";
+	for (let i = page * pageSize; i < outcomeCategories.length && i < (page + 1) * pageSize;i++){
+		html += "<tr>";
+		// html += "<td><a class='tbl-show-link' onclick='showProduct("+outcomeCategories[i].id+")'>"+outcomeCategories[i].code+"</a></td>";
+		html += "<td id='src_product_size'>"+outcomeCategories[i].id+"</td>";
+		html += "<td id='src_product_name'>"+outcomeCategories[i].name+"</td>";
+		html += "<td><a onclick='removeOutcomeCategory("+outcomeCategories[i].id+")'>Rem</a></td>";
+		html += "</tr>";
+	};
+	document.getElementById('outcome-category-tbl').innerHTML = html;
+	document.getElementById('outcome-category-div').style.display = 'block';
+	$('#outcomeCategoryPageNumber').text('' + (page + 1) + ' de ' + Math.ceil(outcomeCategories.length / pageSize));
+};
+
+function renderOutcomeOriginTable(outcomeOrigins, pageSize, page){
+	var html = "<tr>";
+	html += "<td>Id</td>";
+	html += "<td>Nome</td>";
+	html += "</tr>";
+	for (let i = page * pageSize; i < outcomeOrigins.length && i < (page + 1) * pageSize;i++){
+		html += "<tr>";
+		// html += "<td><a class='tbl-show-link' onclick='showProduct("+outcomeOrigins[i].id+")'>"+outcomeOrigins[i].code+"</a></td>";
+		html += "<td id='src_product_size'>"+outcomeOrigins[i].id+"</td>";
+		html += "<td id='src_product_name'>"+outcomeOrigins[i].name+"</td>";
+		html += "<td><a onclick='removeOutcomeOrigin("+outcomeOrigins[i].id+")'>Rem</a></td>";
+		html += "</tr>";
+	};
+	document.getElementById('outcome-origin-tbl').innerHTML = html;
+	document.getElementById('outcome-origin-div').style.display = 'block';
+	$('#outcomeOriginPageNumber').text('' + (page + 1) + ' de ' + Math.ceil(outcomeOrigins.length / pageSize));
 };
