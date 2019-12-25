@@ -69,7 +69,20 @@ const financialController = {
 				console.log(err);
 				res.send({ msg: "Ocorreu um erro ao cadastrar a receita, favor contatar o suporte" });
 			});
+	},
+	incomeFindById: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+			return res.send({ unauthorized: "Você não tem permissão para acessar!" });
+		};
 
+		Financial.incomeFindById(req.params.id)
+			.then(income => {
+				res.send(income);
+			})
+			.catch(err => {
+				console.log(err);
+				res.send({ msg: "Ocorreu um erro ao filtrar as receitas, favor contatar o suporte" });
+			});
 	},
 	incomeFilter: async (req, res) => {
 		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
@@ -274,6 +287,20 @@ const financialController = {
 				res.send({ msg: "Ocorreu um erro ao cadastrar a receita, favor contatar o suporte" });
 			});
 
+	},
+	outcomeFindById: async (req, res) => {
+		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+			return res.send({ unauthorized: "Você não tem permissão para acessar!" });
+		};
+
+		Financial.outcomeFindById(req.params.id)
+			.then(outcome => {
+				res.send(outcome);
+			})
+			.catch(err => {
+				console.log(err);
+				res.send({ msg: "Ocorreu um erro ao filtrar as receitas, favor contatar o suporte" });
+			});
 	},
 	outcomeFilter: async (req, res) => {
 		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){

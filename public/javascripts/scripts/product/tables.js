@@ -22,9 +22,9 @@ function renderAdminProducts(products, pageSize, page){
 		html += "<td><a onclick='removeProduct("+products[i].id+")'>Rem</a></td>";
 		html += "</tr>";
 	};
-	document.getElementById('product-tbl').innerHTML = html;
-	document.getElementById('product-div').style.display = 'block';
-	$('#productPageNumber').text('' + (page + 1) + ' de ' + Math.ceil(products.length / pageSize));
+	document.getElementById('product-admin-filter-tbl').innerHTML = html;
+	document.getElementById('product-admin-filter-div').style.display = 'block';
+	$('#productAdminFilterPageNumber').text('' + (page + 1) + ' de ' + Math.ceil(products.length / pageSize));
 };
 
 function renderCatalogProducts(products, pageSize, page){

@@ -41,7 +41,8 @@ $(function(){
 	$("#product-filter-form").on('submit', (event) => {
 		event.preventDefault();
 		let btn = $(this);btn.attr('disabled', true);
-		let session = document.getElementById("product-filter-form").elements.namedItem('session').value;
+
+		let location = document.getElementById("product-filter-form").elements.namedItem('location').value;
 		let name = document.getElementById("product-filter-form").elements.namedItem('name').value;
 		let code = document.getElementById("product-filter-form").elements.namedItem('code').value;
 		let color = document.getElementById("product-filter-form").elements.namedItem('color').value;
@@ -60,13 +61,13 @@ $(function(){
 
 				function paging(){
 					if(products.length){
-						if(session==="productAdmin"){
+						if(location==="admin"){
 							renderAdminProducts(products, pageSize, page);
-						} else if (session==="productCatalog"){
+						} else if (location==="catalog"){
 							renderCatalogProducts(products, pageSize, page);
 						}
 					} else {
-						lib.clearTable();
+						lib.clearTable('product-admin-filter-tbl','productAdminFilter');
 					};
 				};
 
@@ -99,12 +100,6 @@ $(function(){
 		});
 	});
 });
-
-function displayProductForm(form, table, session){
-	css.displayForm(form, table);
-	// productCategoryList(form, table);
-	productColorList(form, session);
-};
 
 function showProduct(id, admin){
 	$.ajax({
@@ -195,7 +190,6 @@ function filterProduct(name, code, color, session){
 };
 
 function editProduct(id){
-	displayProductForm('product-create-form', 'product-create-form', 'create');
 	$.ajax({
 		url: '/product/id/'+id,
 		method: 'get',

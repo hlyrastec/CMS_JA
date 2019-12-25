@@ -35,6 +35,11 @@ Financial.incomeCategorySave = async (category) => {
 	return db(query);
 };
 
+Financial.incomeFindById = async (id) => {
+	let query = "SELECT * FROM cms_wt_erp.financial_income WHERE id='"+id+"';";
+	return db(query);
+};
+
 Financial.incomeCategoryList = async () => {
 	let query = "SELECT * FROM cms_wt_erp.financial_income_category ORDER BY name ASC;";
 	return db(query);
@@ -90,6 +95,11 @@ Financial.outcomeSave = async (outcome) => {
 	+outcome.obs+"', '"
 	+outcome.user_id+"', '"
 	+outcome.user_name+"')";
+	return db(query);
+};
+
+Financial.outcomeFindById = async (id) => {
+	let query = "SELECT * FROM cms_wt_erp.financial_outcome WHERE id='"+id+"';";
 	return db(query);
 };
 

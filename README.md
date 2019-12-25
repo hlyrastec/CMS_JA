@@ -6,6 +6,8 @@ include admin add image product function
 
 finish seamstress functions (remove)
 
-alter origin same name table
+fix product list
 
-* Show financial income and outcome function
+use two boxes in a box-1
+
+Show income/outcome function

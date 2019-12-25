@@ -9,7 +9,9 @@ const productController = {
 			return res.redirect('/');
 		};
 
-		res.render('product/index');
+		const productColors = await Product.colorList();
+
+		res.render('product/index', { productColors });
 	},
 	// API CONTROLLERS
 	list: async (req, res) => {

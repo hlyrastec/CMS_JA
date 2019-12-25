@@ -13,6 +13,7 @@ router.post('/balance', financialController.balance);
 
 router.get('/income', financialController.income);
 router.post('/income/save', financialController.incomeSave);
+router.get('/income/id/:id', financialController.incomeFindById);
 router.post('/income/filter', financialController.incomeFilter);
 router.post('/incomecategory/save', financialController.incomeCategorySave);
 router.get('/incomecategory/filter', financialController.incomeCategoryFilter);
@@ -30,6 +31,7 @@ router.delete('/incomeorigin/remove', financialController.incomeOriginRemove);
 
 router.get('/outcome', financialController.outcome);
 router.post('/outcome/save', financialController.outcomeSave);
+router.get('/outcome/id/:id', financialController.outcomeFindById);
 router.post('/outcome/filter', financialController.outcomeFilter);
 router.post('/outcomecategory/save', financialController.outcomeCategorySave);
 router.get('/outcomecategory/filter', financialController.outcomeCategoryFilter);

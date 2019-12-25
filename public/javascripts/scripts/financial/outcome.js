@@ -330,6 +330,22 @@ $(function(){
 	});
 });
 
+function showFinancialOutcome(id){
+	$.ajax({
+		url: '/financial/income/id/'+id,
+		method: 'get',
+		success: (income) => {
+			if(income.unauthorized){
+				alert(income.unauthorized);
+				window.location.href = '/login';
+				return;
+			};
+
+			console.log(income);
+		}
+	});
+};
+
 function removeOutcomeCategory(id){
 	let r = confirm('Deseja realmente excluir o produto?');
 	

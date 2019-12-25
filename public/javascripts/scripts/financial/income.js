@@ -329,6 +329,22 @@ $(function(){
 	});
 });
 
+function showFinancialIncome(id){
+	$.ajax({
+		url: '/financial/income/id/'+id,
+		method: 'get',
+		success: (income) => {
+			if(income.unauthorized){
+				alert(income.unauthorized);
+				window.location.href = '/login';
+				return;
+			};
+
+			console.log(income);
+		}
+	});
+};
+
 function removeIncomeCategory(id){
 	const r = confirm('Deseja realmente excluir esta categoria?');
 	
