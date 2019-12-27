@@ -51,6 +51,9 @@ const lib = {
 		};
 		return array;
 	},
+	roundValue: function(value){
+		return Math.round((value) * 100) / 100;
+	},
 
 // -------------------
 // html/css lib

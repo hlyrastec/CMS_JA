@@ -92,7 +92,7 @@ $(function(){
 					totalValue += incomes[i].value;
 				};
 
-				document.getElementById('income_totalValue').innerHTML = totalValue;
+				document.getElementById('income_totalValue').innerHTML = "$"+lib.roundValue(totalValue);
 
 				function paging(){
 					if(incomes.length){
@@ -340,7 +340,29 @@ function showFinancialIncome(id){
 				return;
 			};
 
-			console.log(income);
+			document.getElementById("financial-show-box").style.display = "block";
+
+			var html = "";
+			html += "<tr>";
+			html += "<td>Id<td>";
+			html += "<td>Data<td>";
+			html += "<td>Categoria<td>";
+			html += "<td>Origem<td>";
+			html += "<td>Valor<td>";
+			html += "<td>Usuário<td>";
+			html += "</tr>";
+
+			html += "<tr>";
+			html += "<td>"+income[0].id+"<td>";
+			html += "<td>"+income[0].date+"<td>";
+			html += "<td>"+income[0].category_name+"<td>";
+			html += "<td>"+income[0].origin_name+"<td>";
+			html += "<td>"+income[0].value+"<td>";
+			html += "<td>"+income[0].user_name+"<td>";
+			html += "</tr>";
+			
+			document.getElementById("financial-show-tbl").innerHTML = html;
+			document.getElementById("financial-show-obs").innerHTML = "<br>"+income[0].obs;
 		}
 	});
 };
@@ -355,8 +377,8 @@ function removeIncomeCategory(id){
 			success: (response) => {
 				if(response.unauthorized){
 					alert(response.unauthorized);
-					window.location.href = '/login';
-					return;
+					console.log('incomeCategory');
+					return window.location.href = '/login';
 				};
 				
 				if(response.msg){
@@ -387,8 +409,8 @@ function removeIncomeOrigin(id){
 			success: (response) => {
 				if(response.unauthorized){
 					alert(response.unauthorized);
-					window.location.href = '/login';
-					return;
+					console.log('incomeOrigin');
+					return window.location.href = '/login';
 				};
 				
 				if(response.msg){

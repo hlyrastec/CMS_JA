@@ -177,9 +177,11 @@ const financialController = {
 			});
 	},
 	incomeCategoryRemove: async (req, res) => {
-		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+		if(!await userController.verifyAccess(req, res, ['adm'])){
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
+
+		console.log('incomecategory');
 
 		await Financial.incomeOriginRemoveByCategory(req.query.id);
 
@@ -236,9 +238,11 @@ const financialController = {
 			});
 	},
 	incomeOriginRemove: async (req, res) => {
-		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+		if(!await userController.verifyAccess(req, res, ['adm'])){
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
+
+		console.log('incomeorigin');
 
 		Financial.incomeOriginRemove(req.query.id)
 			.then(result => {
@@ -395,9 +399,11 @@ const financialController = {
 			});
 	},
 	outcomeCategoryRemove: async (req, res) => {
-		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+		if(!await userController.verifyAccess(req, res, ['adm'])){
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
+
+		console.log('outcomecategory');
 
 		await Financial.outcomeOriginRemoveByCategory(req.query.id);
 
@@ -454,9 +460,11 @@ const financialController = {
 			});
 	},
 	outcomeOriginRemove: async (req, res) => {
-		if(!await userController.verifyAccess(req, res, ['adm', 'fin'])){
+		if(!await userController.verifyAccess(req, res, ['adm'])){
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
+
+		console.log('outcomeorigin');
 
 		Financial.outcomeOriginRemove(req.query.id)
 			.then(result => {

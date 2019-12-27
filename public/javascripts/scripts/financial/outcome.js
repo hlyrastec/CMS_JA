@@ -92,7 +92,7 @@ $(function(){
 					totalValue += outcomes[i].value;
 				};
 
-				document.getElementById('outcome_totalValue').innerHTML = totalValue;
+				document.getElementById('outcome_totalValue').innerHTML = "$"+lib.roundValue(totalValue);
 
 				function paging(){
 					if(outcomes.length){
@@ -332,22 +332,44 @@ $(function(){
 
 function showFinancialOutcome(id){
 	$.ajax({
-		url: '/financial/income/id/'+id,
+		url: '/financial/outcome/id/'+id,
 		method: 'get',
-		success: (income) => {
-			if(income.unauthorized){
-				alert(income.unauthorized);
+		success: (outcome) => {
+			if(outcome.unauthorized){
+				alert(outcome.unauthorized);
 				window.location.href = '/login';
 				return;
 			};
 
-			console.log(income);
+			document.getElementById("financial-show-box").style.display = "block";
+
+			var html = "";
+			html += "<tr>";
+			html += "<td>Id<td>";
+			html += "<td>Data<td>";
+			html += "<td>Categoria<td>";
+			html += "<td>Origem<td>";
+			html += "<td>Valor<td>";
+			html += "<td>Usuário<td>";
+			html += "</tr>";
+
+			html += "<tr>";
+			html += "<td>"+outcome[0].id+"<td>";
+			html += "<td>"+outcome[0].date+"<td>";
+			html += "<td>"+outcome[0].category_name+"<td>";
+			html += "<td>"+outcome[0].origin_name+"<td>";
+			html += "<td>"+outcome[0].value+"<td>";
+			html += "<td>"+outcome[0].user_name+"<td>";
+			html += "</tr>";
+			
+			document.getElementById("financial-show-tbl").innerHTML = html;
+			document.getElementById("financial-show-obs").innerHTML = "<br>"+outcome[0].obs;
 		}
 	});
 };
 
 function removeOutcomeCategory(id){
-	let r = confirm('Deseja realmente excluir o produto?');
+	let r = confirm('Deseja realmente excluir esta categoria?');
 	
 	if(r){
 		$.ajax({

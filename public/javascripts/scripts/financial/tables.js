@@ -14,7 +14,7 @@ function renderIncomeTable(incomes, pageSize, page){
 	for (let i = page * pageSize; i < incomes.length && i < (page + 1) * pageSize;i++){
 		html += "<tr>";
 		html += "<td><a class='tbl-show-link' onclick='showFinancialIncome("+incomes[i].id+")'>"+incomes[i].id+"</a></td>";
-		html += "<td>"+incomes[i].date+"</td>";
+		html += "<td>"+lib.convertDate(incomes[i].date)+"</td>";
 		html += "<td>"+incomes[i].category_name+"</td>";
 		html += "<td>"+incomes[i].origin_name+"</td>";
 		html += "<td>"+incomes[i].value+"</td>";
@@ -79,7 +79,7 @@ function renderOutcomeTable(outcomes, pageSize, page){
 		html += "<tr>";
 		html += "<td><a class='tbl-show-link' onclick='showFinancialOutcome("+outcomes[i].id+")'>"+outcomes[i].id+"</a></td>";
 		html += "<td>"+outcomes[i].id+"</td>";
-		html += "<td>"+outcomes[i].date+"</td>";
+		html += "<td>"+lib.convertDate(outcomes[i].date)+"</td>";
 		html += "<td>"+outcomes[i].category_name+"</td>";
 		html += "<td>"+outcomes[i].origin_name+"</td>";
 		html += "<td>"+outcomes[i].value+"</td>";

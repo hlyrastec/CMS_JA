@@ -1,3 +1,7 @@
+const User = require('../model/user');
+
+const bcrypt = require('bcrypt-nodejs');
+
 const userController = {
 	index: (req, res) => {
 		res.render('user/profile', { user: req.user });
@@ -24,12 +28,12 @@ const userController = {
 		res.send({ users: users });
 	},
 	show: async (req, res) => {
-		if(!await userController.verifyAccess(req, res, ['dvp','prp','spt','grf','grl','crd'])){
-			return res.send({ unauthorized: "Usuário não autorizado."});
-		};
+		// if(!await userController.verifyAccess(req, res, ['dvp','prp','spt','grf','grl','crd'])){
+		// 	return res.send({ unauthorized: "Usuário não autorizado."});
+		// };
 
 		let user = await User.findById(req.body.user_id);
-		res.send({ user: user, jobs: Jobs });
+		res.send({ user });
 	},
 	updateInfo: async (req, res) => {
 		if(!req.isAuthenticated()){

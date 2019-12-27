@@ -18,7 +18,7 @@ $(function(){
 					return document.getElementById('product-create-submit').disabled = false;
 				};
 
-				document.getElementById('balance_value').innerHTML = ""+response.incomeValue[0].totalValue+" - "+response.outcomeValue[0].totalValue+" = "+Math.round((response.incomeValue[0].totalValue-response.outcomeValue[0].totalValue) * 100) / 100;
+				document.getElementById('balance_value').innerHTML = "$"+lib.roundValue(response.incomeValue[0].totalValue)+" - $"+lib.roundValue(response.outcomeValue[0].totalValue)+" = $"+lib.roundValue(response.incomeValue[0].totalValue-response.outcomeValue[0].totalValue);
 
 				document.getElementById('balance-report-submit').disabled = false;
 			}
