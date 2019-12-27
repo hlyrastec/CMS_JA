@@ -16,7 +16,7 @@
                     <h3 class="underline-title">Cadastrar Categoria de Receita</h3><br>
 					<form id="income-category-create-form" class="box-1">
 						<input type="hidden" name="category_id" value="0" autocomplete="off">
-						<input type="text" class="btn-generic-medium" name="category_name" placeholder="Nome da categoria" autocomplete="off">
+						<input type="text" class="btn-generic-medium" name="category_name" placeholder="Nome da categoria" autocomplete="off" maxlength="20">
 						<input type="submit" class="btn-generic-small" id="income-category-create-submit" value="Cadastrar">
 					</form>
 	                <div id="income-category-filter-div" style="display:none">
@@ -45,7 +45,7 @@
 								<option value="<%= incomeCategories[i].id %>"><%= incomeCategories[i].name %></option>
 							<% }%>
 						</select>
-						<input type="text" class="btn-generic-medium" name="origin_name" placeholder="Origem da receita" autocomplete="off">
+						<input type="text" class="btn-generic-medium" name="origin_name" placeholder="Origem da receita" autocomplete="off" maxlength="20">
 						<input type="submit" class="btn-generic-small" id="income-origin-create-submit" value="Cadastrar">
 					</form>
 					<div id="income-origin-filter-div" style="display:none">
