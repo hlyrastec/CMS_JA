@@ -28,7 +28,7 @@ CREATE TABLE `financial_income_category` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `financial_income_category` (
 
 LOCK TABLES `financial_income_category` WRITE;
 /*!40000 ALTER TABLE `financial_income_category` DISABLE KEYS */;
-INSERT INTO `financial_income_category` VALUES (1,'Custo Fixo'),(3,'Funcionários'),(2,'Matéria Prima');
+INSERT INTO `financial_income_category` VALUES (7,'BRADESCO'),(10,'BRADESCO PJ'),(8,'BRASIL'),(4,'Caixa'),(9,'CHEQUE'),(6,'ITAÚ'),(3,'Mercado Livre'),(2,'Mercado Pago'),(5,'Site');
 /*!40000 ALTER TABLE `financial_income_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-13 17:52:44
+-- Dump completed on 2019-12-27 18:01:44

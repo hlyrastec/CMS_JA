@@ -29,10 +29,11 @@ CREATE TABLE `users` (
   `phone` varchar(11) NOT NULL,
   `password` varchar(60) NOT NULL,
   `access` varchar(3) NOT NULL DEFAULT 's/a',
+  `birth` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +42,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Henrique Lyra','hlyras1994@gmail.com','33999999961','$2a$10$CKmc/gWnJTmRGTOu/.dM9.Y4XDlh7AL3I8/F8wxnDd8xQ02iFnKmm','adm'),(2,'Luis Henrique','lh@gmail.com','21000000000','$2a$10$CKmc/gWnJTmRGTOu/.dM9.Y4XDlh7AL3I8/F8wxnDd8xQ02iFnKmm','s/a');
+INSERT INTO `users` VALUES (1,'Henrique Lyra','hlyras1994@gmail.com','33999999961','$2a$10$Er4u8/ojmA8RO9MuVfN3lu8vOvG0VQczq9qJNc1JeuVQe4aIvPV5G','adm',NULL),(2,'Luis Henrique','lh@gmail.com','21000000000','$2a$10$CKmc/gWnJTmRGTOu/.dM9.Y4XDlh7AL3I8/F8wxnDd8xQ02iFnKmm','s/a',NULL),(3,'Anny Carvalho','anny@gmail.com','21993293532','$2a$10$7G1oGP9nKqvCUsz6AsoVTucXw1QlcuyYIfYNHLJZ7uGmEj03vw7Qu','fin',NULL),(4,'Sheyla Lyra','sl@gmail.com','21000000000','$2a$10$fLuNiwQuMPhtGALH0MDoPu7ilkAonVgmsbftmkCzwgszaNWaiBc1i','fin',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-13 17:52:46
+-- Dump completed on 2019-12-27 18:01:45

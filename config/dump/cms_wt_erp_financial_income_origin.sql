@@ -28,7 +28,7 @@ CREATE TABLE `financial_income_origin` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `financial_income_origin` (
 
 LOCK TABLES `financial_income_origin` WRITE;
 /*!40000 ALTER TABLE `financial_income_origin` DISABLE KEYS */;
+INSERT INTO `financial_income_origin` VALUES (2,2,'JC'),(3,2,'Chris'),(4,3,'JC'),(5,3,'Chris'),(6,4,'Caixa 1'),(7,5,'Tray'),(8,6,'TED'),(9,6,'DOC'),(10,6,'TEF'),(11,7,'DOC'),(12,7,'TED'),(13,7,'TEF'),(14,8,'DOC'),(15,8,'TED'),(16,8,'TEF'),(17,9,'CHEQUE'),(18,10,'DOC'),(19,10,'TED'),(20,10,'TEF');
 /*!40000 ALTER TABLE `financial_income_origin` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-13 17:52:48
+-- Dump completed on 2019-12-27 18:01:47

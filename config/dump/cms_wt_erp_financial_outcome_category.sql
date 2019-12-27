@@ -28,7 +28,7 @@ CREATE TABLE `financial_outcome_category` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `financial_outcome_category` (
 
 LOCK TABLES `financial_outcome_category` WRITE;
 /*!40000 ALTER TABLE `financial_outcome_category` DISABLE KEYS */;
+INSERT INTO `financial_outcome_category` VALUES (4,'Custo Fixo'),(5,'Fisco'),(1,'Funcionários'),(7,'Máquinas'),(6,'Marketing'),(3,'Mat de Expediente'),(2,'Materia Prima'),(8,'Mercado Livre'),(9,'Site');
 /*!40000 ALTER TABLE `financial_outcome_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-13 17:52:47
+-- Dump completed on 2019-12-27 18:01:46

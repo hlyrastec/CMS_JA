@@ -25,15 +25,17 @@ DROP TABLE IF EXISTS `financial_outcome`;
 CREATE TABLE `financial_outcome` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` varchar(20) NOT NULL,
-  `category` varchar(45) NOT NULL,
-  `origin` varchar(45) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(45) NOT NULL,
+  `origin_id` int(11) NOT NULL,
+  `origin_name` varchar(45) NOT NULL,
   `value` decimal(7,2) NOT NULL,
   `obs` varchar(200) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `user_name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +44,7 @@ CREATE TABLE `financial_outcome` (
 
 LOCK TABLES `financial_outcome` WRITE;
 /*!40000 ALTER TABLE `financial_outcome` DISABLE KEYS */;
+INSERT INTO `financial_outcome` VALUES (1,'2019-12-20',4,'Custo Fixo',4,'Água Fábrica',101.33,'',1,'Henrique Lyra'),(2,'2019-12-23',5,'Fisco',27,'GPS',203.44,'',1,'Henrique Lyra'),(3,'2019-12-27',1,'Funcionários',15,'Betchola',1200.00,'Salário',1,'Henrique Lyra'),(4,'2019-12-27',1,'Funcionários',15,'Betchola',200.00,'Vale passagem do mês 12',1,'Henrique Lyra');
 /*!40000 ALTER TABLE `financial_outcome` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-13 17:52:43
+-- Dump completed on 2019-12-27 18:01:42

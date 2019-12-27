@@ -29,7 +29,7 @@ CREATE TABLE `financial_outcome_origin` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `financial_outcome_origin` (
 
 LOCK TABLES `financial_outcome_origin` WRITE;
 /*!40000 ALTER TABLE `financial_outcome_origin` DISABLE KEYS */;
+INSERT INTO `financial_outcome_origin` VALUES (1,4,'Aluguel Loja'),(2,4,'Aluguel Fábrica'),(3,4,'Água Loja'),(4,4,'Água Fábrica'),(5,4,'Luz Loja'),(6,4,'Luz Fábrica'),(7,4,'Telefone Loja'),(8,4,'Contador'),(9,1,'Daniel'),(10,1,'Henrique'),(11,1,'Fabiano'),(13,1,'Josefa'),(14,1,'Dodô'),(15,1,'Betchola'),(16,1,'Daniel Boca'),(17,1,'Danrlei'),(18,1,'Caio'),(19,1,'Luis Henrique'),(20,1,'Luana'),(21,1,'Chris'),(22,1,'Anny'),(23,1,'Jean'),(24,1,'Sheyla'),(25,5,'Nota Fiscal'),(26,5,'FGTS'),(27,5,'GPS'),(28,6,'Agência Macro'),(29,6,'Vídeos'),(30,3,'Café'),(31,3,'Açucar'),(32,3,'Manteiga'),(33,3,'´Pão'),(34,3,'Churrasco'),(35,3,'Folha A4'),(36,3,'Fitas Adesivas'),(37,3,'Sacola JA'),(38,3,'Saco de Lixo'),(39,3,'Saco Bobina'),(40,3,'Saco Merc Livre'),(41,3,'Saco Nota Fiscal'),(42,3,'Papel Higiênico'),(43,3,'Tinta Impressora'),(44,3,'Tonner Impressora'),(45,3,'Material Limpeza'),(46,3,'Almoxerifado'),(47,7,'Agulhas'),(48,7,'Peças'),(49,7,'Compra de Máquina'),(50,2,'Luã'),(51,2,'China'),(52,2,'Eduardo'),(53,2,'Adina'),(54,2,'Oiapoc'),(55,2,'Brasmac'),(56,2,'Jorge Etiqueta'),(57,2,'Cordon Textil'),(59,2,'Santex'),(60,2,'Rogério Emborrachado'),(61,8,'Devolução Chris'),(62,8,'Devolução JC'),(64,9,'Devolução Tray');
 /*!40000 ALTER TABLE `financial_outcome_origin` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-13 17:52:46
+-- Dump completed on 2019-12-27 18:01:45
