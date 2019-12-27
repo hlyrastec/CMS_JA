@@ -181,8 +181,6 @@ const financialController = {
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
 
-		console.log('incomecategory');
-
 		await Financial.incomeOriginRemoveByCategory(req.query.id);
 
 		Financial.incomeCategoryRemove(req.query.id)
@@ -241,8 +239,6 @@ const financialController = {
 		if(!await userController.verifyAccess(req, res, ['adm'])){
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
-
-		console.log('incomeorigin');
 
 		Financial.incomeOriginRemove(req.query.id)
 			.then(result => {
@@ -403,8 +399,6 @@ const financialController = {
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
 
-		console.log('outcomecategory');
-
 		await Financial.outcomeOriginRemoveByCategory(req.query.id);
 
 		Financial.outcomeCategoryRemove(req.query.id)
@@ -463,8 +457,6 @@ const financialController = {
 		if(!await userController.verifyAccess(req, res, ['adm'])){
 			return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
 		};
-
-		console.log('outcomeorigin');
 
 		Financial.outcomeOriginRemove(req.query.id)
 			.then(result => {

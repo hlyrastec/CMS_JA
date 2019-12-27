@@ -10,7 +10,7 @@ const homeController = {
 	},
 	login: (req, res) => {
 		if(req.user){
-			res.redirect("/");
+			return res.redirect("/");
 		};
 		res.render('login', { message: req.flash('loginMessage')});
 	},
